@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>清除浮动</title>
+	<style>
+		.b,.c{
+			width: 100px;
+			height: 100px;
+			float: left;
+			background-color: red;
+		}
+		.c{
+			background-color: blue;
+		}
+		.clearfix::after{
+			content: '.';
+			display: block;
+			height: 0;
+			clear: both;
+			visibility: hidden;
+		}
+		/*第二种方法*/
+		/*.clearfix{
+			overflow: auto;
+			zoom: 1;
+		}*/
+	</style>
+</head>
+<body>
+	<div class="a clearfix">
+		<div class="b"></div>
+		<div class="c"></div>
+	</div>
+</body>
+</html>

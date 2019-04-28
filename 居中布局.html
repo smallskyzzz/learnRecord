@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>四种方式居中</title>
+	<style>
+		/*flex布局居中*/
+		/*.a{
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			width: 100px;
+			height: 100px;
+			background-color: red;
+		}
+		.b{
+			width: 50px;
+			height: 50px;
+			background-color: blue;
+		}*/
+		
+		/*知道高宽的情况下使用绝对定位*/
+		/*.a{
+			position: relative;
+			width: 100px;
+			height: 100px;
+			background-color: red;
+		}
+		.b{
+			position: absolute;
+			top: 25px;
+			left: 25px;
+			width: 50px;
+			height: 50px;
+			background-color: blue;
+		}*/
+		
+		/*不知道高宽的情况下使用绝对定位加transform*/
+		/*body{
+			width: 100%;
+			height: 400px;
+		}
+		.a{
+			position: relative;
+			width: 33%;
+			height: 50%;
+			background-color: red;
+		}
+		.b{
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			width: 50px;
+			height: 50px;
+			background-color: blue;
+		}*/
+		
+		/*表格布局*/
+		/*.a{
+			display: table-cell;
+			vertical-align: middle;
+			width: 100px;
+			height: 100px;
+			background-color: red;
+		}
+		.b{
+			width: 50px;
+			height: 50px;
+			background-color: blue;
+			margin: 0 auto;
+		}*/
+	</style>
+</head>
+<body>
+	<div class="a">
+		<div class="b"></div>
+	</div>
+</body>
+</html>

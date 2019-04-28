@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>定宽布局</title>
+	<style>
+		/*float实现*/
+		/*body{
+			width: 100%;
+		}
+		.a{
+			width: 30%;
+			height: 100px;
+		}
+		.b{
+			float: left;
+			width: 50px;
+			height: 100px;
+			background-color: red;
+		}
+		.c{
+			width: 100%;
+			height: 100px;
+			background-color: blue;
+		}*/
+		
+		/*使用calc函数（左右未调好）*/
+		/*body{
+			width: 100%;
+		}
+		.a{
+			width: 30%;
+			height: 100px;
+		}
+		.b{
+			float: left;
+			width: 50px;
+			height: 100px;
+			background-color: red;
+		}
+		.c{
+			height: 100px;
+			width: calc(100vw - 50px);
+			float: right;
+			background-color: blue;
+		}*/
+
+		/*flex实现*/
+		/*body{
+			width: 100%;
+		}
+		.a{
+			display: flex;
+			width: 30%;
+			height: 100px;
+		}
+		.b{
+			flex: 0 0 50px;
+			height: 100px;
+			background-color: red;
+		}
+		.c{
+			flex: 1;
+			height: 100px;
+			background-color: blue;
+		}*/
+
+		/*margin加绝对定位实现*/
+		/*body{
+			width: 100%;
+		}
+		.a{
+			width: 30%;
+			height: 100px;
+			position: relative;
+		}
+		.b{
+			width: 50px;
+			height: 100px;
+			background-color: red;
+		}
+		.c{
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			height: 100px;
+			margin-left: 50px;
+			background-color: blue;
+		}*/
+		
+		/*margin加float实现*/
+		/*body{
+			width: 100%;
+		}
+		.a{
+			width: 30%;
+			height: 100px;
+		}
+		.b{
+			width: 50px;
+			height: 100px;
+			float: left;
+			background-color: red;
+		}
+		.c{
+			height: 100px;
+			margin-left: 50px;
+			background-color: blue;
+		}*/
+	</style>
+</head>
+<body>
+	<div class="a">
+		<div class="b"></div>
+		<div class="c"></div>
+	</div>
+</body>
+</html>
