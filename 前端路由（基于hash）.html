@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+  <h1 id="id"></h1>
+  <a href="#/id1">id1</a>
+  <a href="#/id2">id2</a>
+  <a href="#/id3">id3</a>
+</body>
+
+<script>
+  window.addEventListener('hashchange', e => {
+    e.preventDefault()
+    document.querySelector('#id').innerHTML = location.hash
+  })
+</script>
+</html>
+
+<!--缺点是不够美观-->
