@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+  <div class="left" style="background-color: red"></div>
+  <div class="center" style="background-color: blue"></div>
+  <div class="right" style="background-color: red"></div>
+</body>
+</html>
+
+<style>
+  body{
+    height: 100px;
+    margin: 0;
+    padding: 0;
+    font-size: 0;
+    /*display: flex;*/
+    /*!*加上前缀兼容不同浏览器（css hack）*!*/
+    /*display: -ms-flexbox;*/
+  }
+  div{
+    height: 100%;
+  }
+
+  /*flex布局*/
+  /*.left, .right{*/
+    /*flex: 0 0 200px;*/
+    /*-ms-flex: 0 0 200px;*/
+  /*}*/
+  /*.center{*/
+    /*flex: 1;*/
+    /*-ms-flex: 1;*/
+  /*}*/
+
+  /*这种文档结构下无法使用float+margin，因为center是block，相应的right会换行*/
+  /*可将文档结构中的right放到center的前面，css如下就好了*/
+  /*.left{*/
+    /*float: left;*/
+    /*width: 200px;*/
+  /*}*/
+  /*.right{*/
+    /*float: right;*/
+    /*width: 200px;*/
+  /*}*/
+  /*.center{*/
+    /*margin-left: 200px;*/
+    /*margin-right: 200px;*/
+  /*}*/
+
+  /*使用absolute*/
+</style>
