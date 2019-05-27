@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+  <div id="div"></div>
+</body>
+</html>
+
+<style>
+  div {
+    /*标准盒模型的width仅为内容区width，而padding和border则会另外撑起整个元素的width*/
+    /*ie盒模型的width则包括border和padding*/
+    /*box-sizing: border-box;*/
+    background-color: red;
+    padding: 20px;
+    width: 100px;
+    height: 100px;
+    border: 10px solid rgba(0,0,0,0.5);
+  }
+</style>
+
+<script>
+  alert(document.getElementById('div').offsetWidth) // 160 100
+  alert(document.getElementById('div').clientWidth) // 140 80
+  // $.width() innerWidth() outerWidth()
+</script>
