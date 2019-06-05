@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+   <!--[if IE 8]> ie8 <![endif]-->
+</body>
+<script src="./js/browser.min.js"></script>
+<script type="text/javascript" charset="UTF-8" src="./js/jquery.min.js"></script>
+
+<script type="text/babel">
+  var x = '  12 3   '
+  var arr = x.split('')
+  console.log(arr)
+  var l = []
+  for (let i=0;i<arr.length;i++) {
+      if(arr[i] !== ' ') {
+          l.push(i)
+          break
+      }
+  }
+  for (let j=arr.length-1;j>0;j--) {
+      if(arr[j] !== ' ') {
+          l.push(j)
+          break
+      }
+  }
+  console.log(l)
+  console.log(arr.slice(l[0], l[1]+1))
+
+  console.log($.extend({a:1}, {b:2}))
+</script>
+</html>
+
