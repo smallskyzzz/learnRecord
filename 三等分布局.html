@@ -1,0 +1,107 @@
+<!--1.float + padding + background-clip-->
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+  <!--<meta charset="UTF-8">-->
+  <!--<title>Title</title>-->
+  <!--<style>-->
+    <!--body,p{margin: 0;}-->
+    <!--.parentWrap{-->
+        <!--overflow: hidden;-->
+    <!--}-->
+    <!--.parent{-->
+        <!--margin-right: -20px;-->
+        <!--overflow: hidden;-->
+    <!--}-->
+    <!--.child{-->
+        <!--float: left;-->
+        <!--height: 100px;-->
+        <!--width: 25%;-->
+        <!--padding-right: 20px;-->
+        <!--box-sizing: border-box;-->
+        <!--background-clip: content-box;-->
+    <!--}-->
+  <!--</style>-->
+<!--</head>-->
+<!--<body>-->
+  <!--<div class="parentWrap">-->
+    <!--<div class="parent" style="background-color: lightgrey;">-->
+      <!--<div class="child" style="background-color: lightblue;">1</div>-->
+      <!--<div class="child" style="background-color: lightgreen;">2</div>-->
+      <!--<div class="child" style="background-color: lightsalmon;">3</div>-->
+      <!--<div class="child" style="background-color: pink;">4</div>-->
+  <!--</div>-->
+<!--</div>-->
+<!--</body>-->
+<!--</html>-->
+
+<!--2.float + margin + calc-->
+<!--<!doctype html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+  <!--<meta charset="UTF-8">-->
+  <!--<meta name="viewport"-->
+        <!--content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">-->
+  <!--<meta http-equiv="X-UA-Compatible" content="ie=edge">-->
+  <!--<title>Document</title>-->
+  <!--<style>-->
+    <!--body,p{margin: 0;}-->
+    <!--.parentWrap{-->
+        <!--overflow: hidden;-->
+    <!--}-->
+    <!--.parent{-->
+        <!--overflow: hidden;-->
+        <!--margin-right: -20px;-->
+    <!--}-->
+    <!--.child{-->
+        <!--float: left;-->
+        <!--height: 100px;-->
+        <!--width: calc(25% - 20px);-->
+        <!--margin-right: 20px;-->
+    <!--}-->
+  <!--</style>-->
+<!--</head>-->
+<!--<body>-->
+  <!--<div class="parentWrap">-->
+    <!--<div class="parent" style="background-color: lightgrey;">-->
+      <!--<div class="child" style="background-color: lightblue;">1</div>-->
+      <!--<div class="child" style="background-color: lightgreen;">2</div>-->
+      <!--<div class="child" style="background-color: lightsalmon;">3</div>-->
+      <!--<div class="child" style="background-color: pink;">4</div>                -->
+    <!--</div>-->
+  <!--</div>-->
+<!--</body>-->
+<!--</html>-->
+
+<!--3.使用inline-block（跟上述方法类似）-->
+
+<!--4.使用flex-->
+
+<!--5.使用grid-->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    body,p{margin: 0;}
+    .parent{
+        display: grid;
+        grid-template-columns:repeat(4,1fr);
+        grid-gap:20px;
+        height: 100px;
+    }
+  </style>
+</head>
+<body>
+<div class="parent" style="background-color: lightgrey;">
+    <div class="child" style="background-color: lightblue;">1</div>
+    <div class="child" style="background-color: lightgreen;">2</div>
+    <div class="child" style="background-color: lightsalmon;">3</div>
+    <div class="child" style="background-color: pink;">4</div>
+</div>
+</body>
+</html>
