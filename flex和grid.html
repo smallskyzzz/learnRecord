@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--flex布局-->
+<!--当一行能够放下三个以上item时，最后一行不知道该如何处理-->
+<!--<head>-->
+  <!--<meta charset="UTF-8">-->
+  <!--<title>Title</title>-->
+  <!--<style>-->
+    <!--*{-->
+      <!--margin: 0;-->
+      <!--padding: 0;-->
+    <!--}-->
+    <!--.a{-->
+      <!--display: flex;-->
+      <!--flex-wrap: wrap;-->
+      <!--justify-content: space-between;-->
+    <!--}-->
+    <!--.b{-->
+      <!--width: 40%;-->
+      <!--height: 100px;-->
+      <!--background-color: aqua;-->
+    <!--}-->
+    <!--.b:last-child{-->
+      <!--background-color: black;-->
+    <!--}-->
+  <!--</style>-->
+<!--</head>-->
+<!--<body>-->
+  <!--<div class="a">-->
+    <!--<div class="b"></div>-->
+    <!--<div class="b"></div>-->
+    <!--<div class="b"></div>-->
+    <!--<div class="b"></div>-->
+    <!--<div class="b"></div>-->
+  <!--</div>-->
+<!--</body>-->
+
+<!--grid布局-->
+<!--<section class="grid">-->
+    <!--<div class="title">title</div>-->
+    <!--<div class="nav">nav</div>-->
+    <!--<div class="main">main</div>-->
+    <!--<div class="aside">aside</div>-->
+    <!--<div class="footer">footer</div>-->
+<!--</section>-->
+<!--<style>-->
+  <!--*{-->
+    <!--margin: 0;-->
+    <!--padding: 0;-->
+  <!--}-->
+<!--.grid {-->
+    <!--display: grid;-->
+    <!--width: 100vw;-->
+    <!--height: 100vh;-->
+    <!--grid-template-columns: 80px 1fr 1fr 1fr 80px;-->
+    <!--grid-template-rows: 80px 1fr 1fr 80px;-->
+    <!--grid-template-areas: 'title title title title title'-->
+                     <!--'nav main main main aside'-->
+                    <!--'nav main main main aside'-->
+                    <!--'footer footer footer footer footer';-->
+    <!--font-size: 30px;-->
+    <!--text-align: center;-->
+<!--}-->
+<!--.title {-->
+    <!--grid-area: title;-->
+<!--}-->
+<!--.nav {-->
+    <!--grid-area: nav;-->
+<!--}-->
+<!--.main {-->
+    <!--grid-area: main;-->
+<!--}-->
+<!--.aside {-->
+    <!--grid-area: aside;-->
+<!--}-->
+<!--.footer {-->
+    <!--grid-area: footer;-->
+<!--}-->
+<!--</style>-->
+</html>

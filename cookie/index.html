@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+  <script src="../js/jquery.min.js"></script>
+  <script>
+    //写入cookie到主域，设置过期时间为一年
+    function SetCookie(name, value) {
+        var str = name + "=" + escape(value) + ";path=/";
+        var date = new Date();
+        date.setTime(date.getTime() + 365 * 24 * 60 * 60 * 1000); //设置date为当前时间加一年
+
+        str += ";expires=" + date.toGMTString();
+        document.cookie = str;
+    }
+    SetCookie('name', 'jack')
+
+    setTimeout(() => {
+      $.ajax({
+        url: 'http://localhost:8000/test',
+        xhrFields: {
+          withCredentials: true
+        },
+        crossDomain: true,
+        success: function (data) {
+          console.log(data)
+        }
+      })
+    }, 1000)
+    console.log(document.cookie)
+  </script>
+</body>
+</html>
