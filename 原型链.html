@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  <script type="text/javascript">
+    function grandPa(age) {
+      this.age = age
+      this.a = function() {
+        alert(this.age)
+      }
+    }
+    var gp = new grandPa(123)
+    // gp.a()
+    var gp = new grandPa(234)
+    // gp.a()
+    console.log(gp)
+    function father() {
+
+    }
+    father.prototype = new grandPa()
+    console.log(new father())
+
+    // function x() {
+    //   alert(i) // 这里会报undefined，因为i会提升到函数顶部
+    //   // alert(j) 这里会报错，undefined
+    //   for(var i = 0;i < 2;i++) {
+    //     alert(i)
+    //   }
+    // }
+    // x()
+    // 
+    var a = [0,1,2,3,4,5,6,7,8,9,10]
+var aFn = [];
+for (var i = 0; i < 10; i++) {
+    aFn[i] = function() {
+        return a[i]**2;
+    }
+}
+//执行aFn中函数
+for (var j = 0; j < 10; j++) {
+    console.log(aFn[j]());
+}
+  </script>
+</body>
+</html>

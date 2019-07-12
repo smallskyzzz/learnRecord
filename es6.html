@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+  <script src="./js/browser.min.js"></script>
+  <script src="./js/browser-polyfill.min.js"></script>
+  <script src="./js/jquery.min.js"></script>
+  <script type="text/babel">
+    let i = 0;
+    let x = () => {
+        console.log(i)
+    }
+    x()
+    // $.ajax({
+    //     url: './js/jquery.min.js',
+    //     success: function (data) {
+    //         console.log(data)
+    //     }
+    // })
+
+    let promise = new Promise((resolve, reject) => {
+        $.ajax({
+            url: './js/jquery2.min.js'
+        }).then((res) => {
+            resolve(res)
+        }).catch((err) => {
+            reject(err)
+        })
+    })
+
+    // 这里相对于重写两个方法
+    promise.then((res) => {
+        console.log(res)
+    }).catch((err) => {
+        console.log(JSON.stringify(err))
+    })
+
+    var a = new Number(1)
+    var b = new Number(1)
+    alert(a)
+    alert(typeof [1,2,4])
+  </script>
+</body>
+</html>
