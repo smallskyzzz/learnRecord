@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<style>
+    .x{
+        width: 100px;
+        height: 100px;
+        border: 1px solid red;
+    }
+</style>
+
+<body>
+<!--将div设置为可编辑-->
+<div contenteditable="true" class="x"></div>
+</body>
+
+<script>
+    document.querySelector('.x').addEventListener('paste',function(e){
+        console.log(e)
+        var cbd = e.clipboardData;
+        var ua = window.navigator.userAgent;
+        // 如果是 Safari 直接 return
+        if ( !(e.clipboardData && e.clipboardData.items) ) {
+            return ;
+        }
+        // Mac平台下Chrome49版本以下 复制Finder中的文件的Bug Hack掉
+        if(cbd.items && cbd.items.length === 2 && cbd.items[0].kind === "string" && cbd.items[1].kind === "file" &&
+            cbd.types && cbd.types.length === 2 && cbd.types[0] === "text/plain" && cbd.types[1] === "Files" &&
+            ua.match(/Macintosh/i) && Number(ua.match(/Chrome\/(\d{2})/i)[1]) < 49){
+            return;
+        }
+        console.log(cbd.items.length)
+        for(var i = 0; i < cbd.items.length; i++) {
+            var item = cbd.items[i];
+            if(item.kind === "file"){
+                var blob = item.getAsFile();
+                if (blob.size === 0) {
+                    return;
+                }
+                var reader = new FileReader();
+                var imgs = new Image();
+                imgs.file = blob;
+                reader.onload = (function(aImg) {
+                    return function(e) {
+                        aImg.src = e.target.result;
+                    };
+                })(imgs);
+                reader.readAsDataURL(blob);
+                document.querySelector('.x').appendChild(imgs);
+                /*-----------------------不与后台进行交互 直接预览end-----------------------*/
+            }
+        }
+    }, false);
+</script>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div class="nav">
+        <div class="item">
+            <p>item1</p>
+            <span>value1</span>
+            <div class="border"></div>
+        </div>
+        <div class="item">
+            <p>item2</p>
+            <span>value2</span>
+            <div class="border"></div>
+        </div>
+        <div class="item">
+            <p>item3</p>
+            <span>value3</span>
+            <div class="border"></div>
+        </div>
+        <div class="item">
+            <p>item4</p>
+            <span>value4</span>
+            <div class="border"></div>
+        </div>
+    </div>
+</body>
+
+<style type="text/css">
+    .nav{
+        width: 100%;
+        display: flex;
+    }
+    .item{
+        position: relative;
+        flex: 1;
+    }
+    .item p{
+        margin: 0;
+        padding: 0;
+    }
+    .item .border{
+        position: absolute;
+        width: 90%;
+        top: 11px;
+        height: 20px;
+        border-right: 1px solid red;
+    }
+</style>
+</html>
