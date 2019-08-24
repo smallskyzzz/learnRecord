@@ -32,7 +32,7 @@
     $.ajax({
         url: './data.json',
         success: function (data) {
-            console.log(data)
+            // console.log(data)
             var arr = data.data
             for (var i=0;i<arr.length;i++) {
                 $('.modal-body').append('<div class="item title"><input class="title-checkRadio" type="checkbox" value='+ arr[i].name +' />'+ arr[i].name +'</div>')
@@ -53,9 +53,29 @@
             // console.log($(this)[0].checked)
             var _this = this
             if($(this)[0].checked) {
+                var sameLevelDoms = Array.from($(this).parent().prevUntil('.title')).concat(Array.from($(this).parent().nextUntil('.title')))
+                var flag = true
+                // console.log(sameLevelDoms)
+                sameLevelDoms.forEach(function (value) {
+                    console.log($(value).find('input')[0].checked)
+                    if($(value).find('input')[0].checked === false){
+                        flag = false
+                    }
+                })
+                // console.log(flag)
+                if(! $(this).parent().prevUntil('.title').prev().find('input')[0]){
+                    flag === true ? $(this).parent().prev().find('input')[0].checked = true : ''
+                } else {
+                    flag === true ? $(this).parent().prevUntil('.title').prev().find('input')[0].checked = true : ''
+                }
                 $('.wrapper').append('<div class="wrapper-item">'+ $(_this).parent().text() +'<span class="icon" onclick="deleteItem(this)">x</span></div>')
             }else {
                 // console.log($('.wrapper').children())
+                if(! $(this).parent().prevUntil('.title').prev().find('input')[0]){
+                    $(this).parent().prev().find('input')[0].checked = false
+                } else {
+                    $(this).parent().prevUntil('.title').prev().find('input')[0].checked = false
+                }
                 Array.from($('.wrapper').children()).forEach(function (value, index) {
                     if($(value).text().substr(0, $(value).text().length-1) === $(_this).parent().text()) {
                         $(value).remove()
@@ -83,8 +103,13 @@
             // console.log($(me).parent().text())
             if($(value).text() === $(me).parent().text().substr(0, $(me).parent().text().length-1)) {
                 // console.log($(me).parent().text().substr(0, $(me).parent().text().length-1))
-                // console.log($(value).find('input'))
                 $(value).find('input')[0].checked = false
+                // console.log($(value).prevUntil('.title').prev())
+                if(($(value).prevUntil('.title').prev()).length === 0){
+                    $(value).prev().find('input')[0].checked = false
+                } else {
+                    $(value).prevUntil('.title').prev().find('input')[0].checked = false
+                }
             }
         })
     }
