@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://cdn.bootcss.com/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="wrapper"></div>
+<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">开始演示模态框</button>
+<!-- 模态框（Modal） -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">模态框（Modal）标题</h4>
+            </div>
+            <div class="modal-body"></div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary">提交更改</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+</body>
+
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+<script src="https://cdn.bootcss.com/twitter-bootstrap/3.3.7/js/bootstrap.js"></script>
+<script>
+    $.ajax({
+        url: './data.json',
+        success: function (data) {
+            console.log(data)
+            var arr = data.data
+            for (var i=0;i<arr.length;i++) {
+                $('.modal-body').append('<div class="item title"><input class="title-checkRadio" type="checkbox" value='+ arr[i].name +' />'+ arr[i].name +'</div>')
+                for (var j=0;j<arr[i].value.length;j++) {
+                    $('.modal-body').append('<div class="item"><input class="checkRadio" type="checkbox" value='+ arr[i].value[j] +' />'+ arr[i].value[j] +'</div>')
+                }
+            }
+            init()
+        }
+    })
+
+    function init(){
+        $('.title-checkRadio').click(function () {
+            var doms = $(this).parent().nextUntil('.title')
+            domsChange(doms, $(this)[0].checked)
+        })
+        $('.checkRadio').click(function () {
+            // console.log($(this)[0].checked)
+            var _this = this
+            if($(this)[0].checked) {
+                $('.wrapper').append('<div class="wrapper-item">'+ $(_this).parent().text() +'<span class="icon" onclick="deleteItem(this)">x</span></div>')
+            }else {
+                // console.log($('.wrapper').children())
+                Array.from($('.wrapper').children()).forEach(function (value, index) {
+                    if($(value).text().substr(0, $(value).text().length-1) === $(_this).parent().text()) {
+                        $(value).remove()
+                    }
+                })
+            }
+        })
+
+        // $('.icon').click(function () {
+        //     alert(0)
+        //     $(this).parent().remove()
+        //     var _this = this
+        //     Array.from($('.item')).forEach(function (value) {
+        //         if($(value).text() === $(_this).parent().text()) {
+        //             $(value).find('input').checked = false
+        //         }
+        //     })
+        // })
+    }
+
+    function deleteItem(me) {
+        // console.log(me)
+        $(me).parent().remove()
+        Array.from($('.item')).forEach(function (value) {
+            // console.log($(me).parent().text())
+            if($(value).text() === $(me).parent().text().substr(0, $(me).parent().text().length-1)) {
+                // console.log($(me).parent().text().substr(0, $(me).parent().text().length-1))
+                // console.log($(value).find('input'))
+                $(value).find('input')[0].checked = false
+            }
+        })
+    }
+
+    function domsChange(doms, flag) {
+        if(flag){
+            Array.from(doms).forEach(function (value) {
+                if(!$(value).find('input')[0].checked) {
+                    $(value).find('input').click()
+                }
+            })
+        }else {
+            Array.from(doms).forEach(function (value) {
+                if($(value).find('input')[0].checked) {
+                    $(value).find('input').click()
+                }
+            })
+        }
+    }
+</script>
+</html>
+
+<style type="text/css">
+    .wrapper .wrapper-item{
+        position: relative;
+        display: inline-block;
+        padding: 10px 20px 0 0;
+        height: 40px;
+    }
+    .wrapper .wrapper-item .icon{
+        position: absolute;
+        top: 0;
+        cursor: pointer;
+    }
+
+    .item{
+        padding-left: 10px;
+    }
+    .title{
+        padding-left: 0;
+    }
+</style>
