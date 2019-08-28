@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div style="height: 1000px"></div>
+    <div id="a">a</div>
+    <div style="height: 1000px"></div>
+    <a href="#a">aDiv的锚点</a>
+
+    <script>
+        // let [a, b, c] = [1, 2, 3]
+        // console.log(a, b, c)
+
+        // 复制函数
+        let a1 = [1, 2]
+        // 这样只是让a2指向了数组a1的数据的指针
+        let a2 = a1
+        a2[0] = 2
+        // console.log(a1) // [2, 2]
+        // es5使用concat es6直接使用[...a, ...b]
+        let a3 = [3]
+        // console.log([...a1, ...a3])
+
+        // 键值对map
+        let map = new Map([
+            [1, 'one'],
+            [2, 'two']
+        ])
+        // console.log([...map.values()])
+
+    </script>
+</body>
+</html>
