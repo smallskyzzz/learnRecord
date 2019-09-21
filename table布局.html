@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    .title{
+      position: relative;
+      line-height: 50px;
+      text-align: center;
+      font-size: 30px;
+    }
+    .title:after{
+      content: '';
+      position: absolute;
+      top: 50%;
+      width: 100px;
+      height: 2px;
+      background-color: aqua;
+    }
+    .wrapper,.item{
+      height: 100px;
+    }
+    .wrapper{
+      width: 100%;
+      display: table;
+      border-spacing: 20px 0;
+    }
+    .item{
+      display: table-cell;
+      vertical-align: middle;
+      border: 1px solid red;
+      background: aqua;
+    }
+  </style>
+</head>
+<body>
+  <div class="title">table布局</div>
+  <div class="wrapper">
+    <div class="item">1</div>
+    <div class="item">1</div>
+    <div class="item">1</div>
+  </div>
+</body>
+</html>
