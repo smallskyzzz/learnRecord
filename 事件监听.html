@@ -5,24 +5,34 @@
   <title>Title</title>
 </head>
 <body>
-  <div id="a" onclick="alert(0)">
+<div id="b">
+  <div id="a">
     <button id="bt">123</button>
   </div>
+</div>
+
 </body>
 </html>
 
 <script>
   // 事件监听，第三个参数是布尔值，默认false，false是事件冒泡，true是事件捕获
+  // 该布尔值表示的是函数在哪个阶段执行 先捕获再冒泡
   // 好像反了？
   document.getElementById('bt').addEventListener('click', function () {
       alert(1)
+  }, true)
+  document.getElementById('a').addEventListener('click', function () {
+      alert(2)
+  }, true)
+  document.getElementById('b').addEventListener('click', function () {
+      alert(3)
   }, false)
 
   // 使用var会在5秒后输出333
   // 使用let会在5秒后输出012
-  for (var i=0;i<3;i++) {
-      setTimeout(function () {
-          console.log(i)
-      }, 5000)
-  }
+  // for (var i=0;i<3;i++) {
+  //     setTimeout(function () {
+  //         console.log(i)
+  //     }, 5000)
+  // }
 </script>
