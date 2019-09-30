@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style type="text/css">
+    img{
+      width: 100px;
+      height: 200px;
+    }
+  </style>
+</head>
+<body>
+  <ul>
+    <li>
+      <img src="./image/logo.JPG" alt="" data-src="./image/ljz/image1.jpg">
+    </li>
+    <li>
+      <img src="./image/logo.JPG" alt="" data-src="./image/ljz/image2.jpg">
+    </li>
+    <li>
+      <img src="./image/logo.JPG" alt="" data-src="./image/ljz/image3.jpg">
+    </li>
+    <li>
+      <img src="./image/logo.JPG" alt="" data-src="./image/ljz/image4.jpg">
+    </li>
+    <li>
+      <img src="./image/logo.JPG" alt="" data-src="./image/ljz/image5.jpg">
+    </li>
+    <li>
+      <img src="./image/logo.JPG" alt="" data-src="./image/ljz/image6.jpg">
+    </li>
+    <li>
+      <img src="./image/logo.JPG" alt="" data-src="./image/ljz/image7.jpg">
+    </li>
+    <li>
+      <img src="./image/logo.JPG" alt="" data-src="./image/ljz/image8.jpg">
+    </li>
+<!--    <li>-->
+<!--      <img src="./image/logo.JPG" alt="">-->
+<!--    </li>-->
+<!--    <li>-->
+<!--      <img src="./image/logo.JPG" alt="">-->
+<!--    </li>-->
+<!--    <li>-->
+<!--      <img src="./image/logo.JPG" alt="">-->
+<!--    </li>-->
+  </ul>
+</body>
+</html>
+
+<script src="./js/jquery.min.js"></script>
+<script>
+  function lazyLoad($img) {
+    if($img.offset().top+$img.height() - $(window).scrollTop() > 0 && $(window).height() > $img.offset().top - $(window).scrollTop()){
+        if($img.find('img').data('src') === $img.find('img').attr('src')){
+
+        }else{
+            $img.find('img').attr('src', $img.find('img').data('src'))
+        }
+    }
+  }
+
+  $(function () {
+      Array.from($('li')).forEach((value) => {
+          lazyLoad($(value))
+      })
+      $(window).on('scroll', function () {
+          Array.from($('li')).forEach((value) => {
+              lazyLoad($(value))
+          })
+      })
+  })
+</script>
