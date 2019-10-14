@@ -6,7 +6,24 @@
 </head>
 <body>
 <script>
+  // 三者都是改变this的指向
+  // 具体用法如下
+  // 作用可理解为"借刀杀人 借花献佛",将别人的东西拿过来用
+  var a = {
+      value: 1
+  }
+  function f(name, age) {
+      console.log(name)
+      console.log(age)
+      console.log(this.value)
+  }
+  f.call(a, 'alice', 18)
+  f.apply(a, ['nike', 19])
+  let fn = f.bind(a)
+  fn('ad', 20)
 
+  // 给所有dom加上随机颜色的边框
+  [].forEach.call($$("*"),function(a){ a.style.outline="1px solid #"+(~~(Math.random()*(1<<24))).toString(16) })
 </script>
 </body>
 </html>
