@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    /*p:nth-child(2) 选择的是第2个子元素，且是p元素。（先找第2个，再找是不是p）*/
+    /*p:nth-of-type(2) 则是选择第2个为p的子元素。（先找p，再找第2个）*/
+    /*下面都是设置的第一个p的颜色*/
+    p:nth-child(2){
+      /*color: red;*/
+    }
+    p:nth-of-type(1){
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <div>div</div>
+  <p>123</p>
+  <p>456</p>
+</body>
+</html>
