@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    .son{
+      width: 200px;
+      height: 300px;
+      margin: 0 auto;
+      background-color: salmon;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="son">this is son</div>
+  <div class="item"></div>
+  <div class="item"></div>
+</body>
+
+<script src="js/jquery.min.js"></script>
+<script>
+  $(function () {
+      var length = $('.son').width() > $('.son').height() ? $('.son').width() : $('.son').height()
+      console.log(length)
+      var sonClone = $('.son').clone()
+      $('.son').remove()
+      var parent = $('<div></div>')
+      parent.css({
+          'width': length + 'px',
+          'height': length + 'px',
+          'background-color': 'orange',
+          'margin': '0 auto'
+      })
+      parent.append(sonClone)
+      $('body').append(parent)
+  })
+
+  var div = '<div class="item"></div>'
+  $('div').attr('data-id', 2)
+  $('div').attr('id', 1)
+  $('body').append($(div))
+  alert($($('div')[0]).data('id'))
+</script>
+</html>
