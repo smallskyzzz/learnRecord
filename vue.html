@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    li.selected{
+      color: red;
+    }
+    li.active{
+      color: red;
+    }
+  </style>
+</head>
+<body>
+<div id="app" v-bind:title="message">
+  {{message}}
+  <v-item :items="items"></v-item>
+  <ul>
+    <li v-for="(item, index) in items" :class="index === flag ? 'active' : ''" @click="tabChange(index)">
+      {{item.id}}
+    </li>
+  </ul>
+  <v-bt @addall="addAll" ref="bt1"></v-bt>
+  <v-bt @addall="addAll" ref="bt2"></v-bt>
+  <v-bt @addall="addAll" ref="bt3"></v-bt>
+  <span>共点击{{allFlag}}次</span>
+  <button @click="clearAll()">清空</button>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script>
+  // Vue.component('v-item', {
+  //     props: ['items'],
+  //     data : function () {
+  //         return {
+  //             flag: 0
+  //         }
+  //     },
+  //     template: '<ul><li v-for="(item, index) in items" :class="index === flag ? \'selected\' : \'\'" @click="tab(index)">{{item.text}}</li></ul>',
+  //     mounted: function () {
+  //         console.log(Array.from(this.items)[0].text)
+  //     },
+  //     methods: {
+  //         tab: function (index) {
+  //             this.flag = index
+  //         }
+  //     }
+  // })
+
+  // 全局注册
+  Vue.component('v-bt', {
+      data: function () {
+          return {
+              flag: 0
+          }
+      },
+      template: '<div class="bts"><button @click="add();$emit(\'addall\')">click</button><span>当前按钮点击{{flag}}次</span></div>',
+      methods: {
+          add: function () {
+              this.flag++
+          },
+          clear: function () {
+              this.flag = 0
+          }
+      }
+  })
+
+  var VItem = {
+      props: ['items'],
+      data : function () {
+          return {
+              flag: 0
+          }
+      },
+      template: '<ul><li v-for="(item, index) in items" :class="index === flag ? \'selected\' : \'\'" @click="tab(index)">{{item.text}}</li></ul>',
+      mounted: function () {
+          console.log(Array.from(this.items)[0].text)
+      },
+      methods: {
+          tab: function (index) {
+              this.flag = index
+          }
+      }
+  }
+
+  new Vue({
+      el: '#app',
+      data: {
+          message: 'hello',
+          flag: 0,
+          allFlag: 0,
+          items: [
+              {id: 1, text: 'first'},
+              {id: 2, text: 'second'},
+              {id: 3, text: 'third'}
+          ]
+      },
+      created: function () {
+          this.message = 'hello 2'
+      },
+      methods: {
+          tabChange: function (index) {
+              this.flag = index
+          },
+          addAll: function () {
+              this.allFlag ++
+          },
+          clearAll: function () {
+              this.$refs.bt1.clear()
+              this.$refs.bt2.clear()
+              this.$refs.bt3.clear()
+              this.allFlag = 0
+          }
+      },
+      // 局部注册
+      components: {
+          'v-item': VItem
+      }
+  })
+</script>
+</body>
+</html>
