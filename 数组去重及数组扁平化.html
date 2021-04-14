@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<script>
+  // 数组去重
+  var a = [1, 1, 2, 3, 3], a1 = [1, 1, 2, 3, 3]
+
+  var s = [...new Set(a)]
+  console.log(s)
+
+  for (let i=0;i<a.length;i++) {
+    for (let j=i+1;j<a.length;j++) {
+      if (a[i] === a[j]) {
+        a.splice(j, 1)
+        j--
+      }
+    }
+  }
+  console.log(a)
+
+  // filter是Array的原型方法，filter接受一个函数，函数可以传3个参数：分别是遍历到的元素对象，前者的下表和数组本身，如果函数返回真，就把该元素加到新数组中
+  var s1 = []
+  s1 = a1.filter((item, index, array) => {
+    return index === array.indexOf(item)
+  })
+  console.log(s1)
+</script>
+</body>
+</html>
