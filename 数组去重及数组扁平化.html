@@ -28,6 +28,30 @@
     return index === array.indexOf(item)
   })
   console.log(s1)
+
+  // 数组扁平化
+  // flat()方法创建一个新数组，其中所有子数组元素都以递归方式连接到该数组中，直到达到指定的深度为止 Infinity为最大值
+  var b = [1, [2, [3, 4, [5, 6, 7]]]], b1 = [1, [2, [3, 4, [5, 6, 7]]]]
+  console.log(b.flat(Infinity))
+
+  // some方法：循环根据条件返回true或者false
+  while (b.some(item => Array.isArray(item))) {
+    b = [].concat(...b)
+  }
+  console.log(b)
+  // 递归、转字符串再转数组
+
+  // var s2 = []
+  // b1.reduce((res, item) => {
+  //   return res.concat(Array.isArray(item) ? )
+  // })
+  b.reduce((a, b, c, d) => {
+    console.log(a)
+    console.log(b)
+    console.log(c)
+    console.log(d)
+    return b + a
+  })
 </script>
 </body>
 </html>
